@@ -16,6 +16,7 @@
 		B5ADC95E28B3CA2D0047755C /* studyroomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC95D28B3CA2D0047755C /* studyroomTests.swift */; };
 		B5ADC96828B3CA2D0047755C /* studyroomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC96728B3CA2D0047755C /* studyroomUITests.swift */; };
 		B5ADC96A28B3CA2D0047755C /* studyroomUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC96928B3CA2D0047755C /* studyroomUITestsLaunchTests.swift */; };
+		B5ADC97828B3DA650047755C /* ChargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC97728B3DA650047755C /* ChargeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B5ADC96328B3CA2D0047755C /* studyroomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = studyroomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5ADC96728B3CA2D0047755C /* studyroomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studyroomUITests.swift; sourceTree = "<group>"; };
 		B5ADC96928B3CA2D0047755C /* studyroomUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studyroomUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B5ADC97728B3DA650047755C /* ChargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,11 @@
 		B5ADC94528B3CA2B0047755C /* studyroom */ = {
 			isa = PBXGroup;
 			children = (
+				B5ADC97628B3CBA60047755C /* images */,
 				B5ADC94628B3CA2B0047755C /* AppDelegate.swift */,
 				B5ADC94828B3CA2B0047755C /* SceneDelegate.swift */,
 				B5ADC94A28B3CA2B0047755C /* ViewController.swift */,
+				B5ADC97728B3DA650047755C /* ChargeViewController.swift */,
 				B5ADC94C28B3CA2B0047755C /* Main.storyboard */,
 				B5ADC94F28B3CA2C0047755C /* Assets.xcassets */,
 				B5ADC95128B3CA2C0047755C /* LaunchScreen.storyboard */,
@@ -125,6 +129,13 @@
 				B5ADC96928B3CA2D0047755C /* studyroomUITestsLaunchTests.swift */,
 			);
 			path = studyroomUITests;
+			sourceTree = "<group>";
+		};
+		B5ADC97628B3CBA60047755C /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			files = (
 				B5ADC94B28B3CA2B0047755C /* ViewController.swift in Sources */,
 				B5ADC94728B3CA2B0047755C /* AppDelegate.swift in Sources */,
+				B5ADC97828B3DA650047755C /* ChargeViewController.swift in Sources */,
 				B5ADC94928B3CA2B0047755C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
