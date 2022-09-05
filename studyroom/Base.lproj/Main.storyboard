@@ -79,7 +79,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="충전하기"/>
                                         <connections>
-                                            <segue destination="8IH-X2-wFj" kind="show" id="yZy-ap-Q7T"/>
+                                            <action selector="moveChageVc:" destination="GpP-PA-izk" eventType="touchUpInside" id="SR1-tN-Vt8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -112,7 +112,7 @@
         <!--충천하기-->
         <scene sceneID="bnO-JB-cdQ">
             <objects>
-                <viewController id="8IH-X2-wFj" customClass="ChargeViewController" customModule="studyroom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChargeViewController" id="8IH-X2-wFj" customClass="ChargeViewController" customModule="studyroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2JI-0V-3AR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

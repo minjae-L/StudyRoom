@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, timeProtocol {
     
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblUseState: UILabel!
@@ -26,6 +26,25 @@ class ViewController: UIViewController {
         btnCharge.setTitle("충전하기", for: .normal)
     }
     
+    func calcTime() {
+        var time = myTime
+        
+        let hour = time / 3600
+        let minute = (time - (3600 * hour)) / 60
+        
+        lblMyTime.text = "잔여시간: \(hour)시간 \(minute)분 "
+    }
+    
+    func dataSend(data: Int) {
+        myTime += data
+    }
+    
+    @IBAction func moveChageVc(_ sender: UIButton) {
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "ChargeViewController") as? ChargeViewController else { return }
+        nextVC.delegate = self
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
     
 
 //    let timeSelector: Selector = #selector(ViewController.updateTime)
@@ -53,13 +72,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
 //        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
         super.viewDidLoad()
-        
         lblUserName.text = "이민재 님"
         setBtnTitle()
         
 //        setUserInfo()
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        calcTime()
         if isUsing {
             lblUseState.textColor = .green
             lblUseState.text = "이용중입니다."
@@ -70,5 +91,7 @@ class ViewController: UIViewController {
             
         }
     }
+    
+
 }
 

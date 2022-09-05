@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol timeProtocol {
+    func dataSend(data: Int)
+}
+
 class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var lblSelected: UILabel!
     @IBOutlet weak var btnCharge: UIButton!
     var hour : Int = 0
+    
+    var delegate: timeProtocol?
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return MAX_PICKER_COMPONENT
@@ -48,7 +54,9 @@ class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     @IBAction func btnCharge(_ sender: UIButton) {
         let selectedHours = hour * 3600
         print(selectedHours)
+        delegate?.dataSend(data: selectedHours)
         
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
