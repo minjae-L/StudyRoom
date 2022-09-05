@@ -10,7 +10,8 @@ import UIKit
 class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var lblSelected: UILabel!
-    
+    @IBOutlet weak var btnCharge: UIButton!
+    var hour : Int = 0
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return MAX_PICKER_COMPONENT
@@ -29,6 +30,7 @@ class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
             lblSelected.text = "선택된 시간: "
         } else {
             lblSelected.text = "선택된 시간: \(row) 시간"
+            hour = row
         }
     }
     
@@ -38,11 +40,14 @@ class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     var timeArray = ["선택", "1시간", "2시간", "3시간", "4시간", "5시간"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        lblSelected.text = "선택된 시간:"
+        btnCharge.setTitle("충전하기", for: .normal)
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnCharge(_ sender: UIButton) {
+        let selectedHours = hour * 3600
+        print(selectedHours)
         
     }
     
