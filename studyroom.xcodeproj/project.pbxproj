@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B58F5F4728C6538C00B69B78 /* DeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F5F4628C6538C00B69B78 /* DeskViewController.swift */; };
 		B5ADC94728B3CA2B0047755C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC94628B3CA2B0047755C /* AppDelegate.swift */; };
 		B5ADC94928B3CA2B0047755C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC94828B3CA2B0047755C /* SceneDelegate.swift */; };
 		B5ADC94B28B3CA2B0047755C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADC94A28B3CA2B0047755C /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B58F5F4628C6538C00B69B78 /* DeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskViewController.swift; sourceTree = "<group>"; };
 		B5ADC94328B3CA2B0047755C /* studyroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = studyroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5ADC94628B3CA2B0047755C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5ADC94828B3CA2B0047755C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				B5ADC97628B3CBA60047755C /* images */,
 				B5ADC94628B3CA2B0047755C /* AppDelegate.swift */,
 				B5ADC94828B3CA2B0047755C /* SceneDelegate.swift */,
+				B58F5F4628C6538C00B69B78 /* DeskViewController.swift */,
 				B5ADC94A28B3CA2B0047755C /* ViewController.swift */,
 				B5ADC97728B3DA650047755C /* ChargeViewController.swift */,
 				B5ADC94C28B3CA2B0047755C /* Main.storyboard */,
@@ -271,6 +274,7 @@
 			files = (
 				B5ADC94B28B3CA2B0047755C /* ViewController.swift in Sources */,
 				B5ADC94728B3CA2B0047755C /* AppDelegate.swift in Sources */,
+				B58F5F4728C6538C00B69B78 /* DeskViewController.swift in Sources */,
 				B5ADC97828B3DA650047755C /* ChargeViewController.swift in Sources */,
 				B5ADC94928B3CA2B0047755C /* SceneDelegate.swift in Sources */,
 			);

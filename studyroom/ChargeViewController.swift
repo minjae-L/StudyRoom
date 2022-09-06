@@ -46,6 +46,7 @@ class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     var timeArray = ["선택", "1시간", "2시간", "3시간", "4시간", "5시간"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "충전하기"
         lblSelected.text = "선택된 시간:"
         btnCharge.setTitle("충전하기", for: .normal)
         // Do any additional setup after loading the view.
