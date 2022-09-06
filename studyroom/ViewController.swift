@@ -20,6 +20,8 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
     var isUsing = false
     var myTime: Int = 0
     
+    // MARK: - funcs
+    
     func setBtnTitle () {
         btnCheckDesk.setTitle("좌석확인", for: .normal)
         btnFinishUse.setTitle("이용종료", for: .normal)
@@ -48,16 +50,17 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
             btnCheckDesk.isEnabled = true
         }
     }
+    // MARK: - protocol func
     
     func dataSend(data: Int) {
-        print("get timeProtocol")
         myTime += data
     }
     
     func sentUseState(data: Bool) {
         isUsing = data
-        print("get usestate")
     }
+    
+    // MARK: - btn Action
     
     @IBAction func moveChageVc(_ sender: UIButton) {
         guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "ChargeViewController") as? ChargeViewController else { return }
@@ -69,7 +72,23 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
     @IBAction func moveDeskVC(_ sender: UIButton) {
         guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "DeskViewController") as? DeskViewController else { return }
         nextVC.delegate = self
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        
+        let time = myTime
+        
+        if time >= 1800 {
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            
+        } else {
+            let alert = UIAlertController(title: "잔여시간", message: "잔여시간이 얼마 남지 않았습니다. 충전후 이용 바랍니다.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "충전하기", style: .default, handler: {
+                _ in
+                guard let chargeVC = self.storyboard?.instantiateViewController(withIdentifier: "ChargeViewController") as? ChargeViewController else { return }
+                chargeVC.delegate = self
+                self.navigationController?.pushViewController(chargeVC, animated: true)
+            })
+            alert.addAction(okAction)
+            present(alert, animated: true)
+        }
     }
     
     
