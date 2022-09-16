@@ -54,10 +54,17 @@ class ChargeViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     
     @IBAction func btnCharge(_ sender: UIButton) {
         let selectedHours = hour * 3600
-        print(selectedHours)
-        delegate?.dataSend(data: selectedHours)
+        let alert = UIAlertController(title: "충전확인", message: "\(hour) 시간 충전 하시겠습니까?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "예", style: .default, handler: {_ in
+            self.delegate?.dataSend(data: selectedHours)
+            self.navigationController?.popViewController(animated: true)
+        })
+        let noAction = UIAlertAction(title: "아니오", style: .default, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        present(alert, animated: true)
         
-        self.navigationController?.popViewController(animated: true)
+        
     }
     
 }

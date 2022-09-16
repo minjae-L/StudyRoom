@@ -79,7 +79,7 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
             self.navigationController?.pushViewController(nextVC, animated: true)
             
         } else {
-            let alert = UIAlertController(title: "잔여시간", message: "잔여시간이 얼마 남지 않았습니다. 충전후 이용 바랍니다.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "잔여시간", message: "잔여시간이 얼마 남지 않았습니다.\n 충전후 이용 바랍니다.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "충전하기", style: .default, handler: {
                 _ in
                 guard let chargeVC = self.storyboard?.instantiateViewController(withIdentifier: "ChargeViewController") as? ChargeViewController else { return }
