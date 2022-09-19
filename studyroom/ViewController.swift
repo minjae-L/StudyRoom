@@ -18,6 +18,7 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
     @IBOutlet weak var btnCharge: UIButton!
     
     var isUsing = false
+    var usingDeskNum = 0
     var myTime: Int = 0
     
     // MARK: - funcs
@@ -33,21 +34,23 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
         
         let hour = time / 3600
         let minute = (time - (3600 * hour)) / 60
+        let second = time % 60
         
-        lblMyTime.text = "잔여시간: \(hour)시간 \(minute)분 "
+        lblMyTime.text = "잔여시간: \(hour)시간 \(minute)분 \(second)초"
     }
     
-    func checkUsing(data: Bool) {
+    func checkUsing(data: Bool, deskNum: Int) {
         if data {
+            startStudy()
             lblUseState.textColor = .green
-            lblUseState.text = "이용중입니다."
-            btnFinishUse.isEnabled = true
-            btnCheckDesk.isEnabled = false
+            lblUseState.text = "좌석: \(deskNum)번 이용중입니다."
+//            btnFinishUse.isEnabled = true
+//            btnCheckDesk.isEnabled = false
         } else {
             lblUseState.textColor = .red
             lblUseState.text = "이용중이 아닙니다."
-            btnFinishUse.isEnabled = false
-            btnCheckDesk.isEnabled = true
+//            btnFinishUse.isEnabled = false
+//            btnCheckDesk.isEnabled = true
         }
     }
     // MARK: - protocol func
@@ -56,7 +59,8 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
         myTime += data
     }
     
-    func sentUseState(data: Bool) {
+    func sentUseState(data: Bool, deskNum: Int) {
+        usingDeskNum = deskNum
         isUsing = data
     }
     
@@ -95,7 +99,7 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
     @IBAction func finishUsing(_ sender: Any) {
         let alert = UIAlertController(title: "이용종료", message: "이용 종료 하시겠습니까?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.checkUsing(data: false)
+            self.checkUsing(data: false, deskNum: self.usingDeskNum)
             self.isUsing = false
         })
         let noAction = UIAlertAction(title: "아니요", style: .default, handler: nil)
@@ -106,32 +110,35 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
         present(alert, animated: true)
     }
     
+    var sTimer: Timer?
+    
+    func startStudy() {
+        if let timer = sTimer {
+            if !timer.isValid {
+                sTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+            }
+        } else {
+            sTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        }
+    }
     
     
-//    let timeSelector: Selector = #selector(ViewController.updateTime)
-////    let getTime: Selector = #selector(ViewController.calculateTime)
-//    let interval = 1.0
-//
-//    var time = 3600
-//
-//    var name : String?
-//
-//    @objc func updateTime() {
-//        let date = Date()
-//        let formatter = DateFormatter()
-//
-//        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        lblCurrentTime.text = formatter.string(from: date)
-//    }
-//
-//
-//    func setUserInfo() {
-//        name = "이민재"
-//        lblName.text = name
-//    }
+    @objc func updateTime() {
+        
+        guard let timer = sTimer else { return }
+        
+        if isUsing {
+            if myTime == 0 {
+                timer.invalidate()
+            } else {
+                myTime -= 1
+                calcTime()
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
-//        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
         super.viewDidLoad()
         lblUserName.text = "이민재 님"
         setBtnTitle()
@@ -141,7 +148,7 @@ class ViewController: UIViewController, timeProtocol, UseStateProtocol{
     
     override func viewWillAppear(_ animated: Bool) {
         calcTime()
-        checkUsing(data: isUsing)
+        checkUsing(data: isUsing, deskNum: usingDeskNum)
     }
     
 

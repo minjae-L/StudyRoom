@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UseStateProtocol {
-    func sentUseState(data: Bool)
+    func sentUseState(data: Bool, deskNum: Int)
 }
 
 class DeskViewController: UIViewController {
@@ -59,7 +59,7 @@ class DeskViewController: UIViewController {
         
         let alert = UIAlertController(title: "좌석 \(deskNum)번", message: "이용 하시겠습니까?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: { _ in
-            self.delegate?.sentUseState(data: true)
+            self.delegate?.sentUseState(data: true, deskNum: deskNum)
             self.navigationController?.popViewController(animated: true)
             print("use")
         })
